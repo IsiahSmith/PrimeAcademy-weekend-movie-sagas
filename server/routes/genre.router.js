@@ -16,7 +16,7 @@ router.get('/details', (req, res) => {
   pool.query(query, [req.query.id]).then(result => {
     console.log(result.rows);
     res.send(result.rows);
-  }).catch (err => {
+  }).catch(err => {
     console.log('Error in details GET', err);
     res.sendStatus(500);
   });

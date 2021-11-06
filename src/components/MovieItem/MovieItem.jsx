@@ -7,7 +7,7 @@ function MovieItem({ movie }) {
 
     const goToDetails = () => {
         dispatch({ type: 'FETCH_GENRES', payload: movie })
-        dispatch({type: 'SELECTED_ID', payload: movie.id})
+        dispatch({ type: 'SELECTED_ID', payload: movie.id })
         history.push('/details');
     }
 

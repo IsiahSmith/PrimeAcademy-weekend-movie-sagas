@@ -27,7 +27,7 @@ function* fetchAllMovies() {
     } catch {
         console.log('get all error');
     }
-        
+
 }
 
 function* fetchGenres(action) {
@@ -35,8 +35,7 @@ function* fetchGenres(action) {
         console.log('this is action.payload', action.payload);
         let movie = action.payload;
         const response = yield axios.get(`/api/genre/details?id=${movie.id}`)
-
-        yield put({type: 'SET_GENRES', payload: response.data})
+        yield put({ type: 'SET_GENRES', payload: response.data })
     } catch (err) {
         console.log('Error in fetchDetails', err);
     }
@@ -67,22 +66,13 @@ const genres = (state = [], action) => {
     }
 }
 
-// Used to store the details of the selected movie
-// const movieGenres = (state = [], action) => {
-//     switch (action.type) {
-//         case 'SET_DETAILS':
-//             return action.payload;
-//         default:
-//             return state;
-//     }
-// }
 
 const selectedId = (state = '', action) => {
     switch (action.type) {
         case 'SELECTED_ID':
             return action.payload;
         default:
-                return state;
+            return state;
     }
 }
 
@@ -91,7 +81,6 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
-        // movieGenres,
         selectedId
     }),
     // Add sagaMiddleware to our store
@@ -104,7 +93,7 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={storeInstance}>
-        <App />
+            <App />
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')
