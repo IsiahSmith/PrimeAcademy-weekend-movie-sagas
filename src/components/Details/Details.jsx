@@ -8,14 +8,15 @@ function Details () {
 
 
     let selectedMovie = movies.filter(movie => movie.id === selectedId)
+    selectedMovie = selectedMovie[0]
 
-    useEffect(() => {
+    // useEffect(() => {
 
-    })
+    // })
 console.log('selectedMovie', selectedMovie);
 console.log('genres', genres);
 console.log('movies', movies);
-console.log('id', selectedId);
+console.log('id', selectedId); 
     return (
         <>
         {selectedMovie.title ? (
