@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
 
 function AddMovie() {
     let [title, setTitle] = useState('')
@@ -55,9 +56,10 @@ function AddMovie() {
                     label="Movie Description"
                     onChange={(event) => setDescription(event.target.value)}
                 />
+                <InputLabel id="genre-select">Genre</InputLabel>
                 <Select
                     sx={{ m: 1}}
-                    id="genre-select"
+                    labelId="genre-select"
                     value={genre_id}
                     label="Genre"
                     onChange={(event) => setGenre_id(event.target.value)}>
