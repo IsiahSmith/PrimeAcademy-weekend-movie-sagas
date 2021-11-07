@@ -14,7 +14,7 @@ function AddMovie() {
     const handleInputs = () => {
         dispatch({ type: 'ADD_MOVIE', payload: { title, poster, description, genre_id } })
     }
-    console.log('Genres are', genreList);
+
     return (
         <div>
             <h1>Add Movie</h1>
