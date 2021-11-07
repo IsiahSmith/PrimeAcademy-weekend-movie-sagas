@@ -1,5 +1,8 @@
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Container from '@mui/material/Container';
 
 function MovieItem({ movie }) {
     const history = useHistory();
@@ -12,13 +15,28 @@ function MovieItem({ movie }) {
     }
 
     return (
-        <div>
-            <div>
-                <h3>{movie.title}</h3>
-                <img src={movie.poster} alt={movie.title} />
-            </div>
-            <button onClick={goToDetails}>Details</button>
-        </div>
+        <Paper
+            sx={{
+                margin: 'auto'
+            }}
+        >
+            <Container
+                sx={{
+                    width: 300,
+                    padding: 5,
+                    margin: 1,
+                    backgroundColor: 'pink',
+                    '&:hover': {
+                        opacity: [0.7],
+                    },
+                }}
+            >
+                <div>
+                    <h3>{movie.title}</h3>
+                    <img src={movie.poster} alt={movie.title} onClick={goToDetails} />
+                </div>
+            </Container>
+        </Paper>
     )
 }
 
