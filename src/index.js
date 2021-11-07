@@ -33,13 +33,13 @@ function* fetchAllMovies() {
 
 function* addMovie(action) {
     try {
-      console.log('POST payload is', action.payload);
-      yield axios.post('/api/movie', action.payload);
-      yield put ({type: 'FETCH_MOVIES'});
-    } catch(err) {
-      console.log('Error in AddMovie', err);
+        console.log('POST payload is', action.payload);
+        yield axios.post('/api/movie', action.payload);
+        yield put({ type: 'FETCH_MOVIES' });
+    } catch (err) {
+        console.log('Error in AddMovie', err);
     }
-  }
+}
 
 function* fetchGenres(action) {
     try {
@@ -56,7 +56,7 @@ function* genreList() {
     try {
         const response = yield axios.get('/api/genre/list')
         console.log('Response is', response.data);
-        yield put( {type: 'ALL_GENRES', payload: response.data} )
+        yield put({ type: 'ALL_GENRES', payload: response.data })
     } catch (err) {
         console.log('Error in genreList', err);
     }

@@ -3,11 +3,11 @@ import './App.css';
 import MovieList from '../MovieList/MovieList';
 import Details from '../Details/Details';
 import AddMovie from '../AddMovie/AddMovie';
-import {useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 function App() {
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch({ type: 'GENRE_LIST' });

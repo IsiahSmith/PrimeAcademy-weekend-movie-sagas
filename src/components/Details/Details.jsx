@@ -24,7 +24,7 @@ function Details() {
                     <img src={selectedMovie.poster} />
                     <p>{selectedMovie.description}</p>
                 </div>) : (<p>no movie selected</p>)}
-                <Button variant='outlined' onClick={() => history.push('/')}>Back to List</Button>
+            <Button variant='outlined' onClick={() => history.push('/')}>Back to List</Button>
         </>
     )
 }
