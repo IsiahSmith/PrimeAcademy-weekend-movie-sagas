@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 function AddMovie() {
@@ -8,12 +8,13 @@ function AddMovie() {
     let [genre_id, setGenre_id] = useState('')
 
     const dispatch = useDispatch();
-    const genres = useSelector(store => store.genres);
+
+    const genreList = useSelector(store => store.allGenres);
 
     const handleInputs = () => {
         dispatch({ type: 'ADD_MOVIE', payload: { title, poster, description, genre_id } })
     }
-
+    console.log('Genres are', genreList);
     return (
         <div>
             <h1>Add Movie</h1>
@@ -39,16 +40,17 @@ function AddMovie() {
                 <select
                     value={genre_id}
                     onChange={(event) => setGenre_id(event.target.value)}>
-                    <option disabled value='0'>
+                    <option hidden='hidden'>
                         Select a Genre
                     </option>
-                    {genres.map((genre) => (
+                    {genreList.map((genre) => {
+                        return (
                         <option
                             key={genre.id}
                             value={genre.id}>
                             {genre.name}
-                        </option>
-                    ))}
+                        </option>)
+                    })}
                 </select>
                 <input type='submit' value='Add Movie' />
             </form>

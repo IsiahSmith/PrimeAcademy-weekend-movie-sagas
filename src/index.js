@@ -53,9 +53,9 @@ function* fetchGenres(action) {
 
 function* genreList() {
     try {
-        const response = yield axios.get('/api/genre')
-        console.log('Response is', response);
-        yield put( {type: 'SET_GENRES', payload: response.data} )
+        const response = yield axios.get('/api/genre/list')
+        console.log('Response is', response.data);
+        yield put( {type: 'ALL_GENRES', payload: response.data} )
     } catch (err) {
         console.log('Error in genreList', err);
     }
@@ -85,6 +85,15 @@ const genres = (state = [], action) => {
     }
 }
 
+const allGenres = (state = [], action) => {
+    switch (action.type) {
+        case 'ALL_GENRES':
+            console.log('action.payload is', action.payload);
+            return action.payload;
+        default:
+            return state;
+    }
+}
 
 const selectedId = (state = '', action) => {
     switch (action.type) {
@@ -100,6 +109,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        allGenres,
         selectedId
     }),
     // Add sagaMiddleware to our store

@@ -23,12 +23,13 @@ router.get('/details', (req, res) => {
 });
 
 //GETs list of all genres
-router.get('/', (res, res) => {
+router.get('/list', (req, res) => {
   let query = `SELECT * FROM genres;`;
   pool.query(query).then(result => {
+    console.log(result.rows);
     res.send(result.rows);
   }).catch(err => {
-    console.log('Error in GET for all genres');
+    console.log('Error in GET for all genres', err);
     res.sendStatus(500);
   });
 });
