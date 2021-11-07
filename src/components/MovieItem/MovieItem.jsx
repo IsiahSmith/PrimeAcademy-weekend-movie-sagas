@@ -1,6 +1,5 @@
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 
