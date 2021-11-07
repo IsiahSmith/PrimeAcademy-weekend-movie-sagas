@@ -44,7 +44,7 @@ function* fetchGenres(action) {
     try {
         console.log('this is action.payload', action.payload);
         let movie = action.payload;
-        const response = yield axios.get(`/api/genre?id=${movie.id}`)
+        const response = yield axios.get(`/api/genre/details?id=${movie.id}`)
         yield put({ type: 'SET_GENRES', payload: response.data })
     } catch (err) {
         console.log('Error in fetchGenres', err);
@@ -60,7 +60,6 @@ function* genreList() {
         console.log('Error in genreList', err);
     }
 }
-
 
 
 // Create sagaMiddleware

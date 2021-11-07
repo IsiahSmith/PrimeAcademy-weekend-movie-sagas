@@ -7,8 +7,8 @@ router.get('/', (req, res) => {
   res.sendStatus(500)
 });
 
-
-router.get('/', (req, res) => {
+//GETs genre names that match selected movie id
+router.get('/details', (req, res) => {
   let query = `SELECT genres.name FROM movies
   JOIN movies_genres ON movies.id = movies_genres.movie_id
   JOIN genres ON genres.id = movies_genres.genre_id
@@ -18,6 +18,17 @@ router.get('/', (req, res) => {
     res.send(result.rows);
   }).catch(err => {
     console.log('Error in details GET', err);
+    res.sendStatus(500);
+  });
+});
+
+//GETs list of all genres
+router.get('/', (res, res) => {
+  let query = `SELECT * FROM genres;`;
+  pool.query(query).then(result => {
+    res.send(result.rows);
+  }).catch(err => {
+    console.log('Error in GET for all genres');
     res.sendStatus(500);
   });
 });
