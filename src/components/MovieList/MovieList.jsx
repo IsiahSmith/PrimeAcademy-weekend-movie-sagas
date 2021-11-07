@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
 import MovieItem from '../MovieItem/MovieItem';
 import { useHistory } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
 function MovieList() {
 
@@ -16,7 +17,7 @@ function MovieList() {
 
     return (
         <main>
-            <h1>MovieList <span><button onClick={() => history.push('/addMovie')}>Add a Movie</button></span></h1>
+            <h1>MovieList <span><Button variant='outlined' onClick={() => history.push('/addMovie')}>Add a Movie</Button></span></h1>
             <section className="movies">
                 {movies.map(movie => {
                     return (

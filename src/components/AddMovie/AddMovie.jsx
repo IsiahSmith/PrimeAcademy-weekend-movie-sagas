@@ -1,6 +1,8 @@
 import { useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 function AddMovie() {
     let [title, setTitle] = useState('')
@@ -19,24 +21,34 @@ function AddMovie() {
 
     return (
         <div>
-            <h1>Add Movie <span><button onClick={() => history.push('/')}>Cancel</button></span></h1>
+            <h1>Add Movie <span><Button variant='outlined' onClick={() => history.push('/')}>Cancel</Button></span></h1>
             <form onSubmit={handleInputs}>
-                <input
+                <TextField
+                    sx={{ m: 1}}
+                    id="outlined-basic"  
+                    label="Movie Title" 
+                    variant="outlined"
                     type="text"
                     value={title}
-                    placeholder="Movie Title"
                     onChange={(event) => setTitle(event.target.value)}
                 />
-                <input
+                <TextField
+                    sx={{ m: 1}}
+                    id="outlined-basic" 
+                    label="Movie Poster URL" 
+                    variant="outlined"
                     type="text"
                     value={poster}
-                    placeholder="Movie Poster URL"
                     onChange={(event) => setPoster(event.target.value)}
                 />
-                <input
+                <TextField
+                    sx={{ m: 1, width: '40ch' }}
+                    id="outlined-basic" 
+                    variant="outlined"
+                    multiline rows='5'
                     type="text"
                     value={description}
-                    placeholder="Movie Description"
+                    label="Movie Description"
                     onChange={(event) => setDescription(event.target.value)}
                 />
                 <select
@@ -54,7 +66,7 @@ function AddMovie() {
                         </option>)
                     })}
                 </select>
-                <input type='submit' value='Save' />
+                <Button type='submit' value='Save' variant='outlined'>Save</Button>
             </form>
         </div>
     )

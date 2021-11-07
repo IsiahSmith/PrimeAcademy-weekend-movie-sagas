@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
 function Details() {
     const genres = useSelector(store => store.genres);
@@ -23,7 +24,7 @@ function Details() {
                     <img src={selectedMovie.poster} />
                     <p>{selectedMovie.description}</p>
                 </div>) : (<p>no movie selected</p>)}
-                <button onClick={() => history.push('/')}>Back to List</button>
+                <Button variant='outlined' onClick={() => history.push('/')}>Back to List</Button>
         </>
     )
 }
