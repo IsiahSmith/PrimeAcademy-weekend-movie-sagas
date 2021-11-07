@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import FormControl from '@mui/material/FormControl';
 
 function AddMovie() {
     let [title, setTitle] = useState('')
@@ -22,7 +25,8 @@ function AddMovie() {
     return (
         <div>
             <h1>Add Movie <span><Button variant='outlined' onClick={() => history.push('/')}>Cancel</Button></span></h1>
-            <form onSubmit={handleInputs}>
+            <FormControl 
+                sx={{ width: '40ch' }}>
                 <TextField
                     sx={{ m: 1}}
                     id="outlined-basic"  
@@ -42,7 +46,7 @@ function AddMovie() {
                     onChange={(event) => setPoster(event.target.value)}
                 />
                 <TextField
-                    sx={{ m: 1, width: '40ch' }}
+                    sx={{ m: 1}}
                     id="outlined-basic" 
                     variant="outlined"
                     multiline rows='5'
@@ -51,23 +55,23 @@ function AddMovie() {
                     label="Movie Description"
                     onChange={(event) => setDescription(event.target.value)}
                 />
-                <select
+                <Select
+                    sx={{ m: 1}}
+                    id="genre-select"
                     value={genre_id}
+                    label="Genre"
                     onChange={(event) => setGenre_id(event.target.value)}>
-                    <option hidden='hidden'>
-                        Select a Genre
-                    </option>
                     {genreList.map((genre) => {
                         return (
-                        <option
+                        <MenuItem
                             key={genre.id}
                             value={genre.id}>
                             {genre.name}
-                        </option>)
+                        </MenuItem>)
                     })}
-                </select>
-                <Button type='submit' value='Save' variant='outlined'>Save</Button>
-            </form>
+                </Select>
+                <Button sx={{ m: 1}} type='submit' value='Save' variant='outlined' onClick={handleInputs}>Save</Button>
+            </FormControl>
         </div>
     )
 }
