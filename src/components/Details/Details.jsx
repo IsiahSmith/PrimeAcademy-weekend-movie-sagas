@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Details() {
     const genres = useSelector(store => store.genres);
     const movies = useSelector(store => store.movies)
     const selectedId = useSelector(store => store.selectedId)
+    const history = useHistory();
 
     let selectedMovie = movies.filter(movie => movie.id === selectedId)
     selectedMovie = selectedMovie[0]
@@ -22,6 +23,7 @@ function Details() {
                     <img src={selectedMovie.poster} />
                     <p>{selectedMovie.description}</p>
                 </div>) : (<p>no movie selected</p>)}
+                <button onClick={() => history.push('/')}>Back to List</button>
         </>
     )
 }

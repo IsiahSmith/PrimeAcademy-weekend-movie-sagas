@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function AddMovie() {
     let [title, setTitle] = useState('')
@@ -8,16 +9,17 @@ function AddMovie() {
     let [genre_id, setGenre_id] = useState('')
 
     const dispatch = useDispatch();
-
+    const history = useHistory();
     const genreList = useSelector(store => store.allGenres);
 
     const handleInputs = () => {
         dispatch({ type: 'ADD_MOVIE', payload: { title, poster, description, genre_id } })
+        history.push('/')
     }
 
     return (
         <div>
-            <h1>Add Movie</h1>
+            <h1>Add Movie <span><button onClick={() => history.push('/')}>Cancel</button></span></h1>
             <form onSubmit={handleInputs}>
                 <input
                     type="text"
@@ -52,7 +54,7 @@ function AddMovie() {
                         </option>)
                     })}
                 </select>
-                <input type='submit' value='Add Movie' />
+                <input type='submit' value='Save' />
             </form>
         </div>
     )
