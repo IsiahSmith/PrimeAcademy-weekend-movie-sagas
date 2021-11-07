@@ -21,21 +21,27 @@ function AddMovie() {
                 <input
                     type="text"
                     value={title}
+                    placeholder="Movie Title"
                     onChange={(event) => setTitle(event.target.value)}
                 />
                 <input
                     type="text"
                     value={poster}
+                    placeholder="Movie Poster URL"
                     onChange={(event) => setPoster(event.target.value)}
                 />
                 <input
                     type="text"
                     value={description}
+                    placeholder="Movie Description"
                     onChange={(event) => setDescription(event.target.value)}
                 />
                 <select
-                    value={owner_id}
+                    value={genre_id}
                     onChange={(event) => setGenre_id(event.target.value)}>
+                    <option disabled value='0'>
+                        Select a Genre
+                    </option>
                     {genres.map((genre) => (
                         <option
                             key={genre.id}

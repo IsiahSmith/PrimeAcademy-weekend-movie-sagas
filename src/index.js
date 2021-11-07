@@ -16,6 +16,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchGenres);
     yield takeEvery('ADD_MOVIE', addMovie);
+    yield takeEvery('GENRE_LIST', genreList);
 }
 
 function* fetchAllMovies() {
@@ -43,10 +44,20 @@ function* fetchGenres(action) {
     try {
         console.log('this is action.payload', action.payload);
         let movie = action.payload;
-        const response = yield axios.get(`/api/genre/details?id=${movie.id}`)
+        const response = yield axios.get(`/api/genre?id=${movie.id}`)
         yield put({ type: 'SET_GENRES', payload: response.data })
     } catch (err) {
         console.log('Error in fetchGenres', err);
+    }
+}
+
+function* genreList() {
+    try {
+        const response = yield axios.get('/api/genre')
+        console.log('Response is', response);
+        yield put( {type: 'SET_GENRES', payload: response.data} )
+    } catch (err) {
+        console.log('Error in genreList', err);
     }
 }
 

@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 });
 
 
-router.get('/details', (req, res) => {
+router.get('/', (req, res) => {
   let query = `SELECT genres.name FROM movies
   JOIN movies_genres ON movies.id = movies_genres.movie_id
   JOIN genres ON genres.id = movies_genres.genre_id
