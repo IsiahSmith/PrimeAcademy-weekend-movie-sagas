@@ -56,22 +56,24 @@ function AddMovie() {
                     label="Movie Description"
                     onChange={(event) => setDescription(event.target.value)}
                 />
-                <InputLabel id="genre-select">Genre</InputLabel>
-                <Select
-                    sx={{ m: 1 }}
-                    labelId="genre-select"
-                    value={genre_id}
-                    label="Genre"
-                    onChange={(event) => setGenre_id(event.target.value)}>
-                    {genreList.map((genre) => {
-                        return (
-                            <MenuItem
-                                key={genre.id}
-                                value={genre.id}>
-                                {genre.name}
-                            </MenuItem>)
-                    })}
-                </Select>
+                <FormControl>
+                    <InputLabel id="genre-select">Genre</InputLabel>
+                    <Select
+                        sx={{ m: 1 }}
+                        labelId="genre-select"
+                        value={genre_id}
+                        label="Genre"
+                        onChange={(event) => setGenre_id(event.target.value)}>
+                        {genreList.map((genre) => {
+                            return (
+                                <MenuItem
+                                    key={genre.id}
+                                    value={genre.id}>
+                                    {genre.name}
+                                </MenuItem>)
+                        })}
+                    </Select>
+                </FormControl>
                 <Button sx={{ m: 1 }} type='submit' value='Save' variant='outlined' onClick={handleInputs}>Save</Button>
             </FormControl>
         </div>
