@@ -21,9 +21,9 @@ This is a web application that displays a list of movie titles, with each movie'
 
 ## Screenshots
 
-<img src="home-view.jpg"/>
-<img src="description-view.jpg"/>
-<img src="addmovie-view.jpg"/>
+<img src="images/home-view.jpg"/>
+<img src="images/description-view.jpg"/>
+<img src="images/addmovie-view.jpg"/>
 
 ## Built With
 
